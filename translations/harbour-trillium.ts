@@ -129,37 +129,42 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NoteOverviewPage.qml" line="44"/>
+        <location filename="../qml/pages/NoteOverviewPage.qml" line="49"/>
         <source>Add Note</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NoteOverviewPage.qml" line="36"/>
+        <location filename="../qml/pages/NoteOverviewPage.qml" line="41"/>
         <source>Disconnect</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NoteOverviewPage.qml" line="59"/>
+        <location filename="../qml/pages/NoteOverviewPage.qml" line="64"/>
         <source>Refresh</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NoteOverviewPage.qml" line="82"/>
+        <location filename="../qml/pages/NoteOverviewPage.qml" line="87"/>
         <source>Open Sub-notes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NoteOverviewPage.qml" line="91"/>
+        <location filename="../qml/pages/NoteOverviewPage.qml" line="96"/>
         <source>View Details</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NoteOverviewPage.qml" line="141"/>
+        <location filename="../qml/pages/NoteOverviewPage.qml" line="106"/>
+        <source>Delete</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/NoteOverviewPage.qml" line="152"/>
         <source>No notes found</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NoteOverviewPage.qml" line="142"/>
+        <location filename="../qml/pages/NoteOverviewPage.qml" line="153"/>
         <source>Pull down to refresh or make sure your server is online</source>
         <translation type="unfinished"></translation>
     </message>

@@ -15,6 +15,11 @@ Page {
                 trilliumApi.fetchNotes(currentNoteId);
             }
         }
+        onNoteDeleted: {
+            if (success) {
+                trilliumApi.fetchNotes(currentNoteId);
+            }
+        }
     }
 
     onStatusChanged: {
@@ -95,6 +100,12 @@ Page {
                             "noteTitle": title,
                             "noteType": type
                         });
+                    }
+                }
+                MenuItem {
+                    text: qsTr("Delete")
+                    onClicked: {
+                        trilliumApi.deleteNote(noteId);
                     }
                 }
             }

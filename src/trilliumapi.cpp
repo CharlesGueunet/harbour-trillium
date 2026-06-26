@@ -222,3 +222,22 @@ void TrilliumApi::createNote(const QString &parentNoteId, const QString &title, 
         }
     });
 }
+
+void TrilliumApi::deleteNote(const QString &noteId)
+{
+    setBusy(true);
+    QNetworkRequest req = createRequest(QStringLiteral("etapi/notes/%1").arg(noteId));
+
+    QNetworkReply *reply = m_nam->sendCustomRequest(req, "DELETE");
+    connect(reply, &QNetworkReply::finished, this, [this, noteId, reply]() {
+        reply->deleteLater();
+        setBusy(false);
+
+        if (reply->error() == QNetworkReply::NoError) {
+            emit noteDeleted(noteId, true, QString());
+        } else {
+            qWarning() << "[TrilliumApi] deleteNote failed:" << reply->errorString();
+            emit noteDeleted(noteId, false, reply->errorString());
+        }
+    });
+}
