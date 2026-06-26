@@ -26,6 +26,7 @@ DISTFILES += qml/harbour-trillium.qml \
     qml/pages/LoginPage.qml \
     qml/pages/NoteOverviewPage.qml \
     qml/pages/NoteDetailPage.qml \
+    qml/pages/NoteCreateDialog.qml \
     qml/pages/NoteEditDialog.qml \
     icons/cover-icon.png \
     icons/sfos-icon.png \

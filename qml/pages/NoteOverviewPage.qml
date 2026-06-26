@@ -8,6 +8,15 @@ Page {
     property string currentNoteId: "root"
     property string currentNoteTitle: qsTr("Root Notes")
 
+    Connections {
+        target: trilliumApi
+        onNoteCreated: {
+            if (success && parentNoteId === currentNoteId) {
+                trilliumApi.fetchNotes(currentNoteId);
+            }
+        }
+    }
+
     onStatusChanged: {
         if (status === PageStatus.Activating) {
             noteModel.clear();
@@ -32,19 +41,23 @@ Page {
             }
 
             MenuItem {
-                text: qsTr("Refresh")
-                onClicked: trilliumApi.fetchNotes(currentNoteId)
+                text: qsTr("Add Note")
+                onClicked: {
+                    var dialog = pageStack.push(Qt.resolvedUrl("NoteCreateDialog.qml"));
+                    dialog.accepted.connect(function() {
+                        pageStack.replace(Qt.resolvedUrl("NoteEditDialog.qml"), {
+                            "isNewNote": true,
+                            "parentNoteId": currentNoteId,
+                            "noteTitle": dialog.noteTitle,
+                            "initialContent": ""
+                        });
+                    });
+                }
             }
 
             MenuItem {
-                text: qsTr("Go to Root")
-                visible: currentNoteId !== "root"
-                onClicked: {
-                    // Navigate back to the root page of the stack
-                    while (pageStack.depth > 1) {
-                        pageStack.pop();
-                    }
-                }
+                text: qsTr("Refresh")
+                onClicked: trilliumApi.fetchNotes(currentNoteId)
             }
         }
 

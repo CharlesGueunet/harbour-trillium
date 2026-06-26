@@ -195,3 +195,30 @@ void TrilliumApi::updateNoteContent(const QString &noteId, const QString &conten
         }
     });
 }
+
+void TrilliumApi::createNote(const QString &parentNoteId, const QString &title, const QString &content)
+{
+    setBusy(true);
+    QNetworkRequest req = createRequest(QStringLiteral("etapi/create-note"));
+
+    QJsonObject body;
+    body.insert(QStringLiteral("parentNoteId"), parentNoteId);
+    body.insert(QStringLiteral("title"), title);
+    body.insert(QStringLiteral("type"), QStringLiteral("text"));
+    body.insert(QStringLiteral("content"), content);
+
+    QByteArray payload = QJsonDocument(body).toJson();
+
+    QNetworkReply *reply = m_nam->post(req, payload);
+    connect(reply, &QNetworkReply::finished, this, [this, parentNoteId, reply]() {
+        reply->deleteLater();
+        setBusy(false);
+
+        if (reply->error() == QNetworkReply::NoError) {
+            emit noteCreated(parentNoteId, true, QString());
+        } else {
+            qWarning() << "[TrilliumApi] createNote failed:" << reply->errorString();
+            emit noteCreated(parentNoteId, false, reply->errorString());
+        }
+    });
+}

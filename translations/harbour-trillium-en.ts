@@ -53,6 +53,29 @@
     </message>
 </context>
 <context>
+    <name>NoteCreateDialog</name>
+    <message>
+        <location filename="../qml/pages/NoteCreateDialog.qml" line="24"/>
+        <source>New Note Title</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/NoteCreateDialog.qml" line="25"/>
+        <source>Create</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/NoteCreateDialog.qml" line="32"/>
+        <source>Title</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/NoteCreateDialog.qml" line="33"/>
+        <source>Enter note title</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>NoteDetailPage</name>
     <message>
         <location filename="../qml/pages/NoteDetailPage.qml" line="46"/>
@@ -83,12 +106,17 @@
 <context>
     <name>NoteEditDialog</name>
     <message>
-        <location filename="../qml/pages/NoteEditDialog.qml" line="28"/>
+        <location filename="../qml/pages/NoteEditDialog.qml" line="38"/>
         <source>Edit Note</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NoteEditDialog.qml" line="119"/>
+        <location filename="../qml/pages/NoteEditDialog.qml" line="38"/>
+        <source>Create Note: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/NoteEditDialog.qml" line="205"/>
         <source>Note content</source>
         <translation type="unfinished"></translation>
     </message>
@@ -101,37 +129,37 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NoteOverviewPage.qml" line="27"/>
+        <location filename="../qml/pages/NoteOverviewPage.qml" line="44"/>
+        <source>Add Note</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/NoteOverviewPage.qml" line="36"/>
         <source>Disconnect</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NoteOverviewPage.qml" line="35"/>
+        <location filename="../qml/pages/NoteOverviewPage.qml" line="59"/>
         <source>Refresh</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NoteOverviewPage.qml" line="40"/>
-        <source>Go to Root</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/NoteOverviewPage.qml" line="69"/>
+        <location filename="../qml/pages/NoteOverviewPage.qml" line="82"/>
         <source>Open Sub-notes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NoteOverviewPage.qml" line="78"/>
+        <location filename="../qml/pages/NoteOverviewPage.qml" line="91"/>
         <source>View Details</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NoteOverviewPage.qml" line="128"/>
+        <location filename="../qml/pages/NoteOverviewPage.qml" line="141"/>
         <source>No notes found</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NoteOverviewPage.qml" line="129"/>
+        <location filename="../qml/pages/NoteOverviewPage.qml" line="142"/>
         <source>Pull down to refresh or make sure your server is online</source>
         <translation type="unfinished"></translation>
     </message>

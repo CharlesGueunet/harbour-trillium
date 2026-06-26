@@ -24,6 +24,7 @@ public:
     Q_INVOKABLE void fetchNotes(const QString &parentNoteId = QStringLiteral("root"));
     Q_INVOKABLE void fetchNoteContent(const QString &noteId);
     Q_INVOKABLE void updateNoteContent(const QString &noteId, const QString &content);
+    Q_INVOKABLE void createNote(const QString &parentNoteId, const QString &title, const QString &content);
 
 signals:
     void busyChanged();
@@ -31,6 +32,7 @@ signals:
     void notesReceived(const QString &parentNoteId, const QJsonArray &notes);
     void noteContentReceived(const QString &noteId, const QString &content);
     void noteContentUpdated(const QString &noteId, bool success, const QString &errorMessage);
+    void noteCreated(const QString &parentNoteId, bool success, const QString &errorMessage);
 
 private:
     QNetworkRequest createRequest(const QString &endpoint, const QString &overrideUrl = QString(), const QString &overrideToken = QString());
