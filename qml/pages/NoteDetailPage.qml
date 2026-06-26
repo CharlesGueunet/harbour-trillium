@@ -1,0 +1,87 @@
+import QtQuick 2.0
+import Sailfish.Silica 1.0
+
+Page {
+    id: detailPage
+    allowedOrientations: defaultAllowedOrientations
+
+    property string noteId
+    property string noteTitle
+    property string noteType
+    property string noteContent: ""
+
+    Connections {
+        target: trilliumApi
+        onNoteContentReceived: {
+            if (noteId === detailPage.noteId) {
+                detailPage.noteContent = content;
+            }
+        }
+    }
+
+    Component.onCompleted: {
+        trilliumApi.fetchNoteContent(noteId);
+    }
+
+    SilicaFlickable {
+        anchors.fill: parent
+        contentHeight: contentColumn.height + Theme.paddingLarge
+
+        PullDownMenu {
+            MenuItem {
+                text: qsTr("Open Sub-notes")
+                onClicked: {
+                    pageStack.push(Qt.resolvedUrl("NoteOverviewPage.qml"), {
+                        "currentNoteId": noteId,
+                        "currentNoteTitle": noteTitle
+                    });
+                }
+            }
+
+            MenuItem {
+                text: qsTr("Refresh Content")
+                onClicked: trilliumApi.fetchNoteContent(noteId)
+            }
+        }
+
+        Column {
+            id: contentColumn
+            width: parent.width
+            spacing: Theme.paddingMedium
+
+            PageHeader {
+                title: noteTitle
+            }
+
+            Row {
+                width: parent.width - 2 * Theme.horizontalPageMargin
+                anchors.horizontalCenter: parent.horizontalCenter
+                spacing: Theme.paddingSmall
+                visible: noteType !== ""
+
+                Label {
+                    text: qsTr("Type: %1").arg(noteType)
+                    font.pixelSize: Theme.fontSizeTiny
+                    color: Theme.secondaryColor
+                }
+
+                BusyIndicator {
+                    running: trilliumApi.busy
+                    size: BusyIndicatorSize.Small
+                    visible: trilliumApi.busy
+                }
+            }
+
+            Label {
+                id: contentLabel
+                width: parent.width - 2 * Theme.horizontalPageMargin
+                anchors.horizontalCenter: parent.horizontalCenter
+                text: noteContent !== "" ? noteContent : (trilliumApi.busy ? qsTr("Loading note content...") : qsTr("No content or unsupported note type"))
+                textFormat: Text.RichText
+                wrapMode: Text.Wrap
+                font.pixelSize: Theme.fontSizeMedium
+                color: Theme.primaryColor
+            }
+        }
+    }
+}

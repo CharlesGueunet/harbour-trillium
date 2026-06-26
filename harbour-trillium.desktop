@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+X-Nemo-Application-Type=silica-qt5
+Icon=harbour-trillium
+Exec=harbour-trillium
+Name=Trillium
+
+[X-Sailjail]
+OrganizationName=mezmerize
+ApplicationName=harbour-trillium
+Permissions=Internet;Secrets
