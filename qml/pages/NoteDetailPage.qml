@@ -94,17 +94,16 @@ Page {
                 text: noteContent !== "" ? noteContent : (trilliumApi.busy ? qsTr("Loading note content...") : qsTr("No content or unsupported note type"))
                 textFormat: TextEdit.RichText
                 wrapMode: TextEdit.Wrap
-                font.pixelSize: Theme.fontSizeMedium
                 color: Theme.primaryColor
                 readOnly: true
                 selectByMouse: false
 
                 onTextChanged: {
-                    richTextHelper.loadImages(contentLabel.textDocument);
+                    richTextHelper.loadImages(contentLabel.textDocument, contentLabel.width);
                 }
 
                 Component.onCompleted: {
-                    richTextHelper.registerDocument(contentLabel.textDocument);
+                    richTextHelper.registerDocument(contentLabel.textDocument, contentLabel.width);
                 }
             }
         }

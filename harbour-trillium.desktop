@@ -8,4 +8,4 @@ Name=Trillium
 [X-Sailjail]
 OrganizationName=mezmerize
 ApplicationName=harbour-trillium
-Permissions=Internet;Secrets
+Permissions=Internet;Secrets;Pictures;Videos;UserDirs;MediaIndexing

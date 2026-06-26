@@ -106,17 +106,17 @@
 <context>
     <name>NoteEditDialog</name>
     <message>
-        <location filename="../qml/pages/NoteEditDialog.qml" line="38"/>
+        <location filename="../qml/pages/NoteEditDialog.qml" line="39"/>
         <source>Edit Note</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NoteEditDialog.qml" line="38"/>
+        <location filename="../qml/pages/NoteEditDialog.qml" line="39"/>
         <source>Create Note: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NoteEditDialog.qml" line="209"/>
+        <location filename="../qml/pages/NoteEditDialog.qml" line="230"/>
         <source>Note content</source>
         <translation type="unfinished"></translation>
     </message>
