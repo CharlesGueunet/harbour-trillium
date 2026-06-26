@@ -19,6 +19,15 @@ Page {
         }
     }
 
+    onStatusChanged: {
+        if (status === PageStatus.Active) {
+            pageStack.pushAttached(Qt.resolvedUrl("NoteOverviewPage.qml"), {
+                "currentNoteId": noteId,
+                "currentNoteTitle": noteTitle
+            });
+        }
+    }
+
     Component.onCompleted: {
         trilliumApi.fetchNoteContent(noteId);
     }
@@ -28,16 +37,6 @@ Page {
         contentHeight: contentColumn.height + Theme.paddingLarge
 
         PullDownMenu {
-            MenuItem {
-                text: qsTr("Open Sub-notes")
-                onClicked: {
-                    pageStack.push(Qt.resolvedUrl("NoteOverviewPage.qml"), {
-                        "currentNoteId": noteId,
-                        "currentNoteTitle": noteTitle
-                    });
-                }
-            }
-
             MenuItem {
                 text: qsTr("Refresh Content")
                 onClicked: trilliumApi.fetchNoteContent(noteId)

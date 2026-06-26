@@ -55,27 +55,22 @@
 <context>
     <name>NoteDetailPage</name>
     <message>
-        <location filename="../qml/pages/NoteDetailPage.qml" line="32"/>
-        <source>Open Sub-notes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/NoteDetailPage.qml" line="42"/>
+        <location filename="../qml/pages/NoteDetailPage.qml" line="41"/>
         <source>Refresh Content</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NoteDetailPage.qml" line="63"/>
+        <location filename="../qml/pages/NoteDetailPage.qml" line="62"/>
         <source>Type: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NoteDetailPage.qml" line="79"/>
+        <location filename="../qml/pages/NoteDetailPage.qml" line="78"/>
         <source>Loading note content...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NoteDetailPage.qml" line="79"/>
+        <location filename="../qml/pages/NoteDetailPage.qml" line="78"/>
         <source>No content or unsupported note type</source>
         <translation type="unfinished"></translation>
     </message>
