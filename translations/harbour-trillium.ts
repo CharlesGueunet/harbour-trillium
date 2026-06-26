@@ -83,37 +83,37 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NoteOverviewPage.qml" line="26"/>
+        <location filename="../qml/pages/NoteOverviewPage.qml" line="27"/>
         <source>Disconnect</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NoteOverviewPage.qml" line="34"/>
+        <location filename="../qml/pages/NoteOverviewPage.qml" line="35"/>
         <source>Refresh</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NoteOverviewPage.qml" line="39"/>
+        <location filename="../qml/pages/NoteOverviewPage.qml" line="40"/>
         <source>Go to Root</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NoteOverviewPage.qml" line="68"/>
+        <location filename="../qml/pages/NoteOverviewPage.qml" line="69"/>
         <source>Open Sub-notes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NoteOverviewPage.qml" line="77"/>
+        <location filename="../qml/pages/NoteOverviewPage.qml" line="78"/>
         <source>View Details</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NoteOverviewPage.qml" line="127"/>
+        <location filename="../qml/pages/NoteOverviewPage.qml" line="128"/>
         <source>No notes found</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NoteOverviewPage.qml" line="128"/>
+        <location filename="../qml/pages/NoteOverviewPage.qml" line="129"/>
         <source>Pull down to refresh or make sure your server is online</source>
         <translation type="unfinished"></translation>
     </message>

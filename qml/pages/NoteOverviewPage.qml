@@ -9,7 +9,8 @@ Page {
     property string currentNoteTitle: qsTr("Root Notes")
 
     onStatusChanged: {
-        if (status === PageStatus.Active) {
+        if (status === PageStatus.Activating) {
+            noteModel.clear();
             trilliumApi.fetchNotes(currentNoteId);
         }
     }
