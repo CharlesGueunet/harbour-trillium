@@ -23,12 +23,14 @@ public:
     Q_INVOKABLE void testConnection(const QString &url, const QString &password, const QString &token);
     Q_INVOKABLE void fetchNotes(const QString &parentNoteId = QStringLiteral("root"));
     Q_INVOKABLE void fetchNoteContent(const QString &noteId);
+    Q_INVOKABLE void updateNoteContent(const QString &noteId, const QString &content);
 
 signals:
     void busyChanged();
     void connectionTested(bool success, const QString &errorMessage);
     void notesReceived(const QString &parentNoteId, const QJsonArray &notes);
     void noteContentReceived(const QString &noteId, const QString &content);
+    void noteContentUpdated(const QString &noteId, bool success, const QString &errorMessage);
 
 private:
     QNetworkRequest createRequest(const QString &endpoint, const QString &overrideUrl = QString(), const QString &overrideToken = QString());

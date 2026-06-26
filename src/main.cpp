@@ -13,6 +13,7 @@
 #include "settingsmanager.h"
 #include "trilliumapi.h"
 #include "notemodel.h"
+#include "richtexthelper.h"
 
 static void trilliumMessageHandler(QtMsgType type, const QMessageLogContext &ctx, const QString &msg)
 {
@@ -42,6 +43,7 @@ int main(int argc, char *argv[])
     SettingsManager *settingsManager = new SettingsManager(app);
     TrilliumApi *trilliumApi = new TrilliumApi(settingsManager, app);
     NoteModel *noteModel = new NoteModel(app);
+    RichTextHelper *richTextHelper = new RichTextHelper(app);
 
     // Connect Trillium API notes receipt to local note model
     QObject::connect(trilliumApi, &TrilliumApi::notesReceived, [noteModel](const QString &parentNoteId, const QJsonArray &notes) {
@@ -60,6 +62,7 @@ int main(int argc, char *argv[])
     view->rootContext()->setContextProperty(QStringLiteral("settingsManager"), settingsManager);
     view->rootContext()->setContextProperty(QStringLiteral("trilliumApi"), trilliumApi);
     view->rootContext()->setContextProperty(QStringLiteral("noteModel"), noteModel);
+    view->rootContext()->setContextProperty(QStringLiteral("richTextHelper"), richTextHelper);
 
     view->setSource(SailfishApp::pathTo("qml/harbour-trillium.qml"));
     view->show();

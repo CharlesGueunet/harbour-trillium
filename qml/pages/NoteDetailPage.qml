@@ -17,6 +17,11 @@ Page {
                 detailPage.noteContent = content;
             }
         }
+        onNoteContentUpdated: {
+            if (noteId === detailPage.noteId && success) {
+                trilliumApi.fetchNoteContent(noteId);
+            }
+        }
     }
 
     onStatusChanged: {
@@ -37,6 +42,17 @@ Page {
         contentHeight: contentColumn.height + Theme.paddingLarge
 
         PullDownMenu {
+            MenuItem {
+                text: qsTr("Edit")
+                onClicked: {
+                    pageStack.push(Qt.resolvedUrl("NoteEditDialog.qml"), {
+                        "noteId": noteId,
+                        "noteTitle": noteTitle,
+                        "initialContent": noteContent
+                    });
+                }
+            }
+
             MenuItem {
                 text: qsTr("Refresh Content")
                 onClicked: trilliumApi.fetchNoteContent(noteId)

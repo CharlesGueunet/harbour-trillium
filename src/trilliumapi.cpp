@@ -175,3 +175,23 @@ void TrilliumApi::fetchNoteContent(const QString &noteId)
         }
     });
 }
+
+void TrilliumApi::updateNoteContent(const QString &noteId, const QString &content)
+{
+    setBusy(true);
+    QNetworkRequest req = createRequest(QStringLiteral("etapi/notes/%1/content").arg(noteId));
+    req.setHeader(QNetworkRequest::ContentTypeHeader, QStringLiteral("text/plain"));
+
+    QNetworkReply *reply = m_nam->put(req, content.toUtf8());
+    connect(reply, &QNetworkReply::finished, this, [this, noteId, reply]() {
+        reply->deleteLater();
+        setBusy(false);
+
+        if (reply->error() == QNetworkReply::NoError) {
+            emit noteContentUpdated(noteId, true, QString());
+        } else {
+            qWarning() << "[TrilliumApi] updateNoteContent failed:" << reply->errorString();
+            emit noteContentUpdated(noteId, false, reply->errorString());
+        }
+    });
+}

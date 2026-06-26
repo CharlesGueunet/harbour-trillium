@@ -14,7 +14,8 @@ SOURCES += src/main.cpp \
 HEADERS += \
     src/settingsmanager.h \
     src/trilliumapi.h \
-    src/notemodel.h
+    src/notemodel.h \
+    src/richtexthelper.h
 
 icons.files = icons/cover-icon.png
 icons.path = $$PREFIX/share/$${TARGET}/icons
@@ -25,6 +26,7 @@ DISTFILES += qml/harbour-trillium.qml \
     qml/pages/LoginPage.qml \
     qml/pages/NoteOverviewPage.qml \
     qml/pages/NoteDetailPage.qml \
+    qml/pages/NoteEditDialog.qml \
     icons/cover-icon.png \
     icons/sfos-icon.png \
     rpm/harbour-trillium.spec \

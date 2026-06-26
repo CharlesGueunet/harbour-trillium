@@ -55,23 +55,41 @@
 <context>
     <name>NoteDetailPage</name>
     <message>
-        <location filename="../qml/pages/NoteDetailPage.qml" line="41"/>
+        <location filename="../qml/pages/NoteDetailPage.qml" line="46"/>
+        <source>Edit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/NoteDetailPage.qml" line="57"/>
         <source>Refresh Content</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NoteDetailPage.qml" line="62"/>
+        <location filename="../qml/pages/NoteDetailPage.qml" line="78"/>
         <source>Type: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NoteDetailPage.qml" line="78"/>
+        <location filename="../qml/pages/NoteDetailPage.qml" line="94"/>
         <source>Loading note content...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NoteDetailPage.qml" line="78"/>
+        <location filename="../qml/pages/NoteDetailPage.qml" line="94"/>
         <source>No content or unsupported note type</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>NoteEditDialog</name>
+    <message>
+        <location filename="../qml/pages/NoteEditDialog.qml" line="28"/>
+        <source>Edit Note</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/NoteEditDialog.qml" line="119"/>
+        <source>Note content</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
