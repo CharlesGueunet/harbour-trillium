@@ -116,7 +116,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NoteEditDialog.qml" line="205"/>
+        <location filename="../qml/pages/NoteEditDialog.qml" line="209"/>
         <source>Note content</source>
         <translation type="unfinished"></translation>
     </message>

@@ -43,7 +43,7 @@ int main(int argc, char *argv[])
     SettingsManager *settingsManager = new SettingsManager(app);
     TrilliumApi *trilliumApi = new TrilliumApi(settingsManager, app);
     NoteModel *noteModel = new NoteModel(app);
-    RichTextHelper *richTextHelper = new RichTextHelper(app);
+    RichTextHelper *richTextHelper = new RichTextHelper(settingsManager, app);
 
     // Connect Trillium API notes receipt to local note model
     QObject::connect(trilliumApi, &TrilliumApi::notesReceived, [noteModel](const QString &parentNoteId, const QJsonArray &notes) {

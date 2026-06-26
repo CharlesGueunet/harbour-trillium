@@ -87,15 +87,25 @@ Page {
                 }
             }
 
-            Label {
+            TextEdit {
                 id: contentLabel
                 width: parent.width - 2 * Theme.horizontalPageMargin
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: noteContent !== "" ? noteContent : (trilliumApi.busy ? qsTr("Loading note content...") : qsTr("No content or unsupported note type"))
-                textFormat: Text.RichText
-                wrapMode: Text.Wrap
+                textFormat: TextEdit.RichText
+                wrapMode: TextEdit.Wrap
                 font.pixelSize: Theme.fontSizeMedium
                 color: Theme.primaryColor
+                readOnly: true
+                selectByMouse: false
+
+                onTextChanged: {
+                    richTextHelper.loadImages(contentLabel.textDocument);
+                }
+
+                Component.onCompleted: {
+                    richTextHelper.registerDocument(contentLabel.textDocument);
+                }
             }
         }
     }
