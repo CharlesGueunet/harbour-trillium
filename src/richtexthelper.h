@@ -129,15 +129,17 @@ public:
 
         QTextCursor cursor(doc);
         cursor.setPosition(selectionStart);
-        if (selectionStart == selectionEnd) {
-            cursor.select(QTextCursor::WordUnderCursor);
-        } else {
-            cursor.setPosition(selectionEnd, QTextCursor::KeepAnchor);
-        }
 
         QTextCharFormat format;
-        format.setFontWeight(cursor.charFormat().fontWeight() == QFont::Bold ? QFont::Normal : QFont::Bold);
-        cursor.mergeCharFormat(format);
+        if (selectionStart == selectionEnd) {
+            bool isBold = cursor.charFormat().fontWeight() == QFont::Bold;
+            format.setFontWeight(isBold ? QFont::Normal : QFont::Bold);
+            cursor.insertText(QString(QChar(0x200B)), format);
+        } else {
+            cursor.setPosition(selectionEnd, QTextCursor::KeepAnchor);
+            format.setFontWeight(cursor.charFormat().fontWeight() == QFont::Bold ? QFont::Normal : QFont::Bold);
+            cursor.mergeCharFormat(format);
+        }
     }
 
     Q_INVOKABLE void toggleItalic(QObject *textDocument, int selectionStart, int selectionEnd) {
@@ -148,15 +150,17 @@ public:
 
         QTextCursor cursor(doc);
         cursor.setPosition(selectionStart);
-        if (selectionStart == selectionEnd) {
-            cursor.select(QTextCursor::WordUnderCursor);
-        } else {
-            cursor.setPosition(selectionEnd, QTextCursor::KeepAnchor);
-        }
 
         QTextCharFormat format;
-        format.setFontItalic(!cursor.charFormat().fontItalic());
-        cursor.mergeCharFormat(format);
+        if (selectionStart == selectionEnd) {
+            bool isItalic = cursor.charFormat().fontItalic();
+            format.setFontItalic(!isItalic);
+            cursor.insertText(QString(QChar(0x200B)), format);
+        } else {
+            cursor.setPosition(selectionEnd, QTextCursor::KeepAnchor);
+            format.setFontItalic(!cursor.charFormat().fontItalic());
+            cursor.mergeCharFormat(format);
+        }
     }
 
     Q_INVOKABLE void toggleUnderline(QObject *textDocument, int selectionStart, int selectionEnd) {
@@ -167,15 +171,17 @@ public:
 
         QTextCursor cursor(doc);
         cursor.setPosition(selectionStart);
-        if (selectionStart == selectionEnd) {
-            cursor.select(QTextCursor::WordUnderCursor);
-        } else {
-            cursor.setPosition(selectionEnd, QTextCursor::KeepAnchor);
-        }
 
         QTextCharFormat format;
-        format.setFontUnderline(!cursor.charFormat().fontUnderline());
-        cursor.mergeCharFormat(format);
+        if (selectionStart == selectionEnd) {
+            bool isUnderline = cursor.charFormat().fontUnderline();
+            format.setFontUnderline(!isUnderline);
+            cursor.insertText(QString(QChar(0x200B)), format);
+        } else {
+            cursor.setPosition(selectionEnd, QTextCursor::KeepAnchor);
+            format.setFontUnderline(!cursor.charFormat().fontUnderline());
+            cursor.mergeCharFormat(format);
+        }
     }
 
     Q_INVOKABLE void setHeading(QObject *textDocument, int selectionStart, int selectionEnd, int level) {
