@@ -118,6 +118,7 @@ public:
         QTextCursor cursor(doc);
         cursor.setPosition(cursorPosition);
         cursor.insertHtml(QStringLiteral("<img src=\"%1\" />").arg(dataUrl));
+        scaleImagesInDocument(doc, maxWidth);
     }
 
     Q_INVOKABLE void toggleBold(QObject *textDocument, int selectionStart, int selectionEnd) {
@@ -246,6 +247,52 @@ private slots:
     }
 
 private:
+    void scaleImagesInDocument(QTextDocument *doc, int maxWidth) {
+        if (!doc || maxWidth <= 0) return;
+
+        doc->blockSignals(true);
+        QTextCursor cursor(doc);
+
+        for (QTextBlock block = doc->begin(); block != doc->end(); block = block.next()) {
+            for (QTextBlock::iterator it = block.begin(); !it.atEnd(); ++it) {
+                QTextFragment fragment = it.fragment();
+                if (fragment.isValid()) {
+                    QTextCharFormat format = fragment.charFormat();
+                    if (format.isImageFormat()) {
+                        QTextImageFormat imgFormat = format.toImageFormat();
+                        qreal w = imgFormat.width();
+                        qreal h = imgFormat.height();
+
+                        QUrl resolvedUrl = doc->baseUrl().resolved(QUrl(imgFormat.name()));
+                        QVariant resource = doc->resource(QTextDocument::ImageResource, resolvedUrl);
+                        QImage img;
+                        if (resource.isValid()) {
+                            img = resource.value<QImage>();
+                        }
+
+                        qreal actualWidth = w > 0 ? w : (img.isNull() ? 0 : img.width());
+                        qreal actualHeight = h > 0 ? h : (img.isNull() ? 0 : img.height());
+
+                        if (actualWidth > maxWidth) {
+                            qreal ratio = actualWidth > 0 ? (actualHeight / actualWidth) : 1.0;
+                            qreal newWidth = maxWidth;
+                            qreal newHeight = maxWidth * ratio;
+
+                            imgFormat.setWidth(newWidth);
+                            imgFormat.setHeight(newHeight);
+
+                            cursor.setPosition(fragment.position());
+                            cursor.setPosition(fragment.position() + fragment.length(), QTextCursor::KeepAnchor);
+                            cursor.setCharFormat(imgFormat);
+                        }
+                    }
+                }
+            }
+        }
+        doc->blockSignals(false);
+        doc->markContentsDirty(0, doc->characterCount());
+    }
+
     void loadImagesInDocument(QTextDocument *doc, int maxWidth) {
         if (!doc) return;
         QString html = doc->toHtml();
@@ -274,6 +321,7 @@ private:
 
             downloadImage(doc, relativePath, maxWidth);
         }
+        scaleImagesInDocument(doc, maxWidth);
     }
 
     void downloadImage(QTextDocument *doc, const QString &relativePath, int maxWidth) {
@@ -312,6 +360,7 @@ private:
                     QUrl resolvedUrl = doc->baseUrl().resolved(QUrl(relativePath));
                     doc->addResource(QTextDocument::ImageResource, resolvedUrl, image);
                     doc->markContentsDirty(0, doc->characterCount());
+                    scaleImagesInDocument(doc, maxWidth);
                 }
             }
         });
