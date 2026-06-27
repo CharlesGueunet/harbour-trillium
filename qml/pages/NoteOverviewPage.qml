@@ -129,7 +129,12 @@ Page {
                     if (type === "code") return "image://theme/icon-m-file-formatted";
                     return "image://theme/icon-m-file-other";
                 }
-                enabled: false
+                onClicked: {
+                    pageStack.push(Qt.resolvedUrl("NoteOverviewPage.qml"), {
+                        "currentNoteId": noteId,
+                        "currentNoteTitle": title
+                    });
+                }
             }
 
             Label {
