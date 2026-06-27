@@ -4,6 +4,9 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QJsonArray>
+#include <QStandardPaths>
+#include <QFile>
+#include <QDir>
 
 TrilliumApi::TrilliumApi(SettingsManager *settings, QObject *parent)
     : QObject(parent)
@@ -238,6 +241,44 @@ void TrilliumApi::deleteNote(const QString &noteId)
         } else {
             qWarning() << "[TrilliumApi] deleteNote failed:" << reply->errorString();
             emit noteDeleted(noteId, false, reply->errorString());
+        }
+    });
+}
+
+void TrilliumApi::downloadNote(const QString &noteId, const QString &title)
+{
+    setBusy(true);
+    QNetworkRequest req = createRequest(QStringLiteral("etapi/notes/%1/content").arg(noteId));
+
+    QNetworkReply *reply = m_nam->get(req);
+    connect(reply, &QNetworkReply::finished, this, [this, noteId, title, reply]() {
+        reply->deleteLater();
+        setBusy(false);
+
+        if (reply->error() == QNetworkReply::NoError) {
+            QByteArray data = reply->readAll();
+            QString downloadDir = QStandardPaths::writableLocation(QStandardPaths::DownloadLocation);
+            if (downloadDir.isEmpty()) {
+                downloadDir = QDir::homePath() + QStringLiteral("/Downloads");
+            }
+            QDir().mkpath(downloadDir);
+
+            QString sanitizedTitle = title;
+            sanitizedTitle.replace(QStringLiteral("/"), QStringLiteral("_"));
+            sanitizedTitle.replace(QStringLiteral("\\"), QStringLiteral("_"));
+
+            QString filePath = downloadDir + QStringLiteral("/") + sanitizedTitle;
+            QFile file(filePath);
+            if (file.open(QIODevice::WriteOnly)) {
+                file.write(data);
+                file.close();
+                emit noteDownloaded(noteId, true, tr("File saved to %1").arg(filePath));
+            } else {
+                emit noteDownloaded(noteId, false, tr("Failed to write file to %1").arg(filePath));
+            }
+        } else {
+            qWarning() << "[TrilliumApi] downloadNote failed:" << reply->errorString();
+            emit noteDownloaded(noteId, false, tr("Failed to download file: %1").arg(reply->errorString()));
         }
     });
 }

@@ -78,28 +78,48 @@
 <context>
     <name>NoteDetailPage</name>
     <message>
-        <location filename="../qml/pages/NoteDetailPage.qml" line="46"/>
+        <location filename="../qml/pages/NoteDetailPage.qml" line="54"/>
         <source>Edit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NoteDetailPage.qml" line="57"/>
+        <location filename="../qml/pages/NoteDetailPage.qml" line="66"/>
         <source>Refresh Content</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NoteDetailPage.qml" line="78"/>
+        <location filename="../qml/pages/NoteDetailPage.qml" line="88"/>
         <source>Type: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NoteDetailPage.qml" line="94"/>
+        <location filename="../qml/pages/NoteDetailPage.qml" line="104"/>
         <source>Loading note content...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NoteDetailPage.qml" line="94"/>
-        <source>No content or unsupported note type</source>
+        <location filename="../qml/pages/NoteDetailPage.qml" line="104"/>
+        <source>No content</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/NoteDetailPage.qml" line="136"/>
+        <source>This is a binary file note. Press the button below to download it to your device.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/NoteDetailPage.qml" line="146"/>
+        <source>Downloading...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/NoteDetailPage.qml" line="146"/>
+        <source>Download File</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/NoteDetailPage.qml" line="149"/>
+        <source>Starting download...</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -172,33 +192,48 @@
 <context>
     <name>TrilliumApi</name>
     <message>
-        <location filename="../src/trilliumapi.cpp" line="81"/>
+        <location filename="../src/trilliumapi.cpp" line="84"/>
         <source>App-info verification failed: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/trilliumapi.cpp" line="86"/>
+        <location filename="../src/trilliumapi.cpp" line="89"/>
         <source>Response did not contain authToken</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/trilliumapi.cpp" line="92"/>
+        <location filename="../src/trilliumapi.cpp" line="95"/>
         <source>Unauthorized: Invalid password</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/trilliumapi.cpp" line="112"/>
+        <location filename="../src/trilliumapi.cpp" line="115"/>
         <source>Unauthorized: Invalid API Token</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/trilliumapi.cpp" line="119"/>
+        <location filename="../src/trilliumapi.cpp" line="122"/>
         <source>Please provide a password or an API token</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/trilliumapi.cpp" line="174"/>
+        <location filename="../src/trilliumapi.cpp" line="177"/>
         <source>Failed to fetch note content: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/trilliumapi.cpp" line="275"/>
+        <source>File saved to %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/trilliumapi.cpp" line="277"/>
+        <source>Failed to write file to %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/trilliumapi.cpp" line="281"/>
+        <source>Failed to download file: %1</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

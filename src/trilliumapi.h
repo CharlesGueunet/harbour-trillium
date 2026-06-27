@@ -26,6 +26,7 @@ public:
     Q_INVOKABLE void updateNoteContent(const QString &noteId, const QString &content);
     Q_INVOKABLE void createNote(const QString &parentNoteId, const QString &title, const QString &content);
     Q_INVOKABLE void deleteNote(const QString &noteId);
+    Q_INVOKABLE void downloadNote(const QString &noteId, const QString &title);
 
 signals:
     void busyChanged();
@@ -35,6 +36,7 @@ signals:
     void noteContentUpdated(const QString &noteId, bool success, const QString &errorMessage);
     void noteCreated(const QString &parentNoteId, bool success, const QString &errorMessage);
     void noteDeleted(const QString &noteId, bool success, const QString &errorMessage);
+    void noteDownloaded(const QString &noteId, bool success, const QString &message);
 
 private:
     QNetworkRequest createRequest(const QString &endpoint, const QString &overrideUrl = QString(), const QString &overrideToken = QString());
