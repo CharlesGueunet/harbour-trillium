@@ -15,6 +15,7 @@ struct NoteItem
     bool isProtected;
     QString dateCreated;
     QString dateModified;
+    QString iconClass;
 };
 
 class NoteModel : public QAbstractListModel
@@ -30,7 +31,8 @@ public:
         MimeRole,
         IsProtectedRole,
         DateCreatedRole,
-        DateModifiedRole
+        DateModifiedRole,
+        IconClassRole
     };
 
     explicit NoteModel(QObject *parent = nullptr);

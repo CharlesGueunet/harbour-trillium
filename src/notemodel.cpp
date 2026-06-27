@@ -43,6 +43,8 @@ QVariant NoteModel::data(const QModelIndex &index, int role) const
         return item.dateCreated;
     case DateModifiedRole:
         return item.dateModified;
+    case IconClassRole:
+        return item.iconClass;
     default:
         return QVariant();
     }
@@ -58,6 +60,7 @@ QHash<int, QByteArray> NoteModel::roleNames() const
     roles[IsProtectedRole] = "isProtected";
     roles[DateCreatedRole] = "dateCreated";
     roles[DateModifiedRole] = "dateModified";
+    roles[IconClassRole] = "iconClass";
     return roles;
 }
 
@@ -77,6 +80,23 @@ void NoteModel::loadNotes(const QJsonArray &jsonArray)
             item.isProtected = obj.value(QStringLiteral("isProtected")).toBool();
             item.dateCreated = obj.value(QStringLiteral("dateCreated")).toString();
             item.dateModified = obj.value(QStringLiteral("dateModified")).toString();
+            
+            // Parse iconClass from note properties or attributes
+            item.iconClass = obj.value(QStringLiteral("iconClass")).toString();
+            if (item.iconClass.isEmpty()) {
+                QJsonArray attributes = obj.value(QStringLiteral("attributes")).toArray();
+                for (const QJsonValue &attrValue : attributes) {
+                    if (attrValue.isObject()) {
+                        QJsonObject attrObj = attrValue.toObject();
+                        if (attrObj.value(QStringLiteral("type")).toString() == QStringLiteral("label") &&
+                            attrObj.value(QStringLiteral("name")).toString() == QStringLiteral("iconClass")) {
+                            item.iconClass = attrObj.value(QStringLiteral("value")).toString();
+                            break;
+                        }
+                    }
+                }
+            }
+
             m_notes.append(item);
         }
     }
@@ -110,6 +130,7 @@ QVariantMap NoteModel::getNote(int index) const
         map[QStringLiteral("isProtected")] = item.isProtected;
         map[QStringLiteral("dateCreated")] = item.dateCreated;
         map[QStringLiteral("dateModified")] = item.dateModified;
+        map[QStringLiteral("iconClass")] = item.iconClass;
     }
     return map;
 }

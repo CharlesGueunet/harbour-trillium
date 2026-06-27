@@ -120,10 +120,30 @@ Page {
 
             IconButton {
                 id: typeIcon
+                width: Math.round(Theme.iconSizeMedium * 0.95)
+                height: Math.round(Theme.iconSizeMedium * 0.95)
+                icon.width: Math.round(Theme.iconSizeMedium * 0.95)
+                icon.height: Math.round(Theme.iconSizeMedium * 0.95)
+                icon.sourceSize.width: Math.round(Theme.iconSizeMedium * 0.95)
+                icon.sourceSize.height: Math.round(Theme.iconSizeMedium * 0.95)
                 anchors.left: parent.left
                 anchors.leftMargin: Theme.horizontalPageMargin
                 anchors.verticalCenter: parent.verticalCenter
                 icon.source: {
+                    if (iconClass && iconClass !== "") {
+                        var parts = iconClass.split(" ");
+                        var name = "";
+                        for (var i = 0; i < parts.length; i++) {
+                            var part = parts[i].trim();
+                            if (part !== "" && part !== "bx") {
+                                name = part;
+                                break;
+                            }
+                        }
+                        if (name !== "") {
+                            return "../icons/" + name + ".svg";
+                        }
+                    }
                     if (type === "text") return "image://theme/icon-m-file-document";
                     if (type === "image") return "image://theme/icon-m-image";
                     if (type === "code") return "image://theme/icon-m-file-formatted";

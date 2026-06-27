@@ -179,12 +179,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NoteOverviewPage.qml" line="157"/>
+        <location filename="../qml/pages/NoteOverviewPage.qml" line="177"/>
         <source>No notes found</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NoteOverviewPage.qml" line="158"/>
+        <location filename="../qml/pages/NoteOverviewPage.qml" line="178"/>
         <source>Pull down to refresh or make sure your server is online</source>
         <translation type="unfinished"></translation>
     </message>
